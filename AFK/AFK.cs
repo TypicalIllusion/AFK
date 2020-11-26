@@ -15,8 +15,6 @@ namespace AFK
         public override PluginPriority Priority { get; } = PluginPriority.Low;
 
         public static bool enabledInGame = true;
-
-
         public void RegisterEvents()
         {
             
