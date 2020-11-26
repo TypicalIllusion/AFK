@@ -6,6 +6,7 @@ using RemoteAdmin;
 namespace AFK
 {
     [CommandHandler(typeof(ClientCommandHandler))]
+    [CommandHandler(typeof(RemoteAdminCommandHandler))]
     public class UAFK : ICommand
     {
         public string Command { get; } = "unafk";

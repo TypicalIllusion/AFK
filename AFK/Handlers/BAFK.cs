@@ -6,13 +6,14 @@ using RemoteAdmin;
 namespace AFK
 {
     [CommandHandler(typeof(ClientCommandHandler))]
+    [CommandHandler(typeof(RemoteAdminCommandHandler))]
     public class BAFK : ICommand
     {
         public string Command { get; } = "afk";
 
         public string[] Aliases { get; } = Array.Empty<string>();
 
-        public string Description { get; } = "Gives a player overwatch mode to prevent afk kicking";
+        public string Description { get; } = "adds overwatch mode";
 
         public bool Execute(ArraySegment<string> arguments, ICommandSender sender, out string response)
         {
@@ -21,7 +22,7 @@ namespace AFK
                 Player p = Player.Get(player.SenderId);
 
                 response = "Overwatch mode added";
-                p.IsOverwatchEnabled = true;
+                p.IsOverwatchEnabled = false;
                 return true;
             }
 
