@@ -76,8 +76,7 @@
   <ItemGroup>
     <Compile Include="AFK.cs" />
     <Compile Include="Config.cs" />
-    <Compile Include="Handlers\BAFK.cs" />
-    <Compile Include="Handlers\UAFK.cs" />
+    <Compile Include="Handlers\AfkCmd.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
