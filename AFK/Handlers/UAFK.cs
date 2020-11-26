@@ -1,28 +1,35 @@
-﻿using System;
-using CommandSystem;
-using Exiled.API.Features;
-using RemoteAdmin;
-
-namespace AFK
+﻿namespace AFK
 {
+    using CommandSystem;
+    using Exiled.API.Features;
+    using Exiled.Permissions.Extensions;
+    using RemoteAdmin;
+    using System;
+
     [CommandHandler(typeof(ClientCommandHandler))]
-    [CommandHandler(typeof(RemoteAdminCommandHandler))]
     public class UAFK : ICommand
     {
-        public string Command { get; } = "unafk";
+        public string Command => "unafk";
 
-        public string[] Aliases { get; } = Array.Empty<string>();
+        public string[] Aliases => Array.Empty<string>();
 
-        public string Description { get; } = "removes overwatch mode";
+        public string Description => "removes overwatch";
 
         public bool Execute(ArraySegment<string> arguments, ICommandSender sender, out string response)
         {
             if (sender is PlayerCommandSender player)
             {
                 Player p = Player.Get(player.SenderId);
+                if (!p.CheckPermission("afk"))
+                {
+                    response = "message the server owner to give you the permission 'afk'";
+                    return false;
+                }
 
-                response = "Overwatch mode removed";
-                p.IsOverwatchEnabled = false;
+                p.IsOverwatchEnabled = !p.IsOverwatchEnabled;
+                response = p.IsOverwatchEnabled
+                    ? "You have been set to overwatch mode.\nYou will not respawn."
+                    : "You have been removed from overwatch mode.\nYou may now respawn.";
                 return true;
             }
 
