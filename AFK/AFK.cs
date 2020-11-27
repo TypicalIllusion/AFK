@@ -23,6 +23,10 @@ namespace AFK
         {
             
         }
+        public override void OnReloaded()
+        {
+            base.OnReloaded();
+        }
 
         public override void OnEnabled()
         {
