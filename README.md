@@ -6,7 +6,7 @@ This makes you __NOT__ respawn.
 | --- | --- | --- | --- |
 | `is_enabled` | bool | Toggles the plugin | true |
 
-This plugin requires <link="https://github.com/galaxy119/EXILED"><u>EXILED</u></link>.
-To install EXILED go <link="https://www.youtube.com/watch?v=EUfzj8OWvQU"<u>here</u></link>.
+This plugin requires https://github.com/galaxy119/EXILED">.
+To install EXILED go to https://www.youtube.com/watch?v=EUfzj8OWvQU".
 
 Discord: TypicalIllusion#5726
