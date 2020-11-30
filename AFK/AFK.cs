@@ -15,6 +15,9 @@ namespace AFK
         public override PluginPriority Priority { get; } = PluginPriority.Low;
 
         public static bool enabledInGame = true;
+
+        private static readonly Lazy<AFK> LazyInstance = new Lazy<AFK>(valueFactory: () => new AFK()); // instance
+        public static AFK Instance => LazyInstance.Value; // instance
         public void RegisterEvents()
         {
             

@@ -8,5 +8,7 @@ namespace AFK
     {
         [Description("Is the plugin enabled?")]
         public bool IsEnabled { get; set; } = true;
+        [Description("How many players until the command doesnt work?")]
+        public int Maxplayers { get; set; } = 10;
     }
 }
