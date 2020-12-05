@@ -2,6 +2,8 @@
 
 using Exiled.API.Features;
 using Exiled.API.Enums;
+using Server = Exiled.Events.Handlers.Server;
+
 namespace AFK
 {
     public class AFK : Plugin<Config>
@@ -16,8 +18,23 @@ namespace AFK
 
         public static bool enabledInGame = true;
 
-        public static AFK Singleton;
+        private static readonly Lazy<AFK> LazyInstance = new Lazy<AFK>(valueFactory: () => new AFK()); // instance
+        public static AFK Instance => LazyInstance.Value; // instance
+        private Handlers.Server server;
 
+        public void RegisterEvents()
+        {
+            server = new Handlers.Server();
+
+            Server.RespawningTeam += server.OnRespawningTeam;
+
+        }
+        public void UnregisterEvents()
+        {
+            Server.RespawningTeam -= server.OnRespawningTeam;
+
+            server = null;
+        }
         public override void OnReloaded()
         {
             base.OnReloaded();
@@ -26,10 +43,12 @@ namespace AFK
         public override void OnEnabled()
         {
             base.OnEnabled();
+            RegisterEvents();
         }
         public override void OnDisabled()
         {
             base.OnDisabled();
+            UnregisterEvents();
         }
     }
 }
