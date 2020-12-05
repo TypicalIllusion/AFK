@@ -3,6 +3,7 @@ using Exiled.API.Features;
 using RemoteAdmin;
 using System;
 using System.Linq;
+using static AFK.AFK;
 
 namespace AFK
 {
@@ -26,7 +27,7 @@ namespace AFK
                     : "You have been removed from overwatch mode.\nYou may now respawn.";
                 return true;
             }
-            if (Player.List.Count() >= AFK.Instance.Config.Maxplayers)
+            if (Player.List.Count() >= Singleton.Config.Maxplayers)
             {
                 response = "Too many players";
                 return false;
