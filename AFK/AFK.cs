@@ -17,14 +17,7 @@ namespace AFK
         public static bool enabledInGame = true;
 
         public static AFK Singleton;
-        public void RegisterEvents()
-        {
-            
-        }
-        public void UnregisterEvents()
-        {
-            
-        }
+
         public override void OnReloaded()
         {
             base.OnReloaded();
@@ -33,12 +26,10 @@ namespace AFK
         public override void OnEnabled()
         {
             base.OnEnabled();
-            RegisterEvents();
         }
         public override void OnDisabled()
         {
             base.OnDisabled();
-            UnregisterEvents();
         }
     }
 }
