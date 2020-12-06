@@ -13,14 +13,14 @@ namespace AFK
 
         public string[] Aliases => Array.Empty<string>();
 
-        public string Description => "Gives a player overwatch mode to prevent afk kicking";
+        public string Description => "Makes players not respawn to prevent afk kicking";
 
         public bool Execute(ArraySegment<string> arguments, ICommandSender sender, out string response)
         {
             if (sender is PlayerCommandSender player)
             {
                 Player p = Player.Get(player.SenderId);
-                if (Handlers.Server.afk_players.Contains(p) == true)
+                if (Handlers.Server.afk_players.Contains(p) == false)
                 {
                     Handlers.Server.afk_players.Add(p);
                 }
@@ -40,7 +40,7 @@ namespace AFK
                 return false;
             }
 
-            response = "This command must be executed from the game level.";
+            response = "if you did this in the 'm' console do it in the '~/`' console";
             return false;
         }
     }
